@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica,
+    sans-serif;
 }
 
 @layer base {
@@ -36,9 +37,11 @@ body {
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0%
+      98%;
     --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-accent-foreground: 240
+      5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
@@ -70,9 +73,11 @@ body {
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0%
+      100%;
     --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240
+      4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
@@ -89,25 +94,55 @@ body {
 
 .tiptap {
   /* List styles */
-  ul, 
+  ul,
   ol {
     padding: 0 1rem;
     margin: 1.25rem 1rem 1.25rem 0.4rem;
   }
   ul li {
     list-style-type: disc;
-  p {
+    p {
       margin-top: 0.25em;
       margin-bottom: 0.25em;
     }
-  
   }
 
   ol li {
     list-style-type: decimal;
+
     p {
       margin-top: 0.25em;
       margin-bottom: 0.25em;
+    }
+  }
+
+  /* Task list specific styles */
+  ul[data-type="taskList"] {
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
+
+    li {
+      align-items: flex-start;
+      display: flex;
+
+      > label {
+        flex: 0 0 auto;
+        margin-right: 0.5rem;
+        user-select: none;
+      }
+
+      > div {
+        flex: 1 1 auto;
+      }
+    }
+
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    ul[data-type="taskList"] {
+      margin: 0;
     }
   }
 }
