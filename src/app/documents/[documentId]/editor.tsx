@@ -12,6 +12,11 @@ import Table from '@tiptap/extension-table'
 import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
+import Image from '@tiptap/extension-image'
+import ImageResize from "tiptap-extension-resize-image"
+import Dropcursor from '@tiptap/extension-dropcursor'
+
+
 
 export const Editor = () => {
     // The useEditor hook is used to create a new editor instance with the specified configuration. See the docs for more information: www.tiptap.dev/docs/editor/getting-started/install/nextjs
@@ -26,6 +31,9 @@ export const Editor = () => {
     },
     extensions: [StarterKit,
     TaskList,
+    Image,
+    ImageResize,
+    Dropcursor,
     TaskItem.configure({
       nested: true,
     }),
@@ -37,22 +45,11 @@ export const Editor = () => {
       TableCell,
     ],
 
-    content: `
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Description</th>
-            </tr>
-            <tr>
-              <td>Cyndi Lauper</td>
-              <td>Singer</td>
-              <td>Songwriter</td>
-              <td>Actress</td>
-            </tr>
-          </tbody>
-        </table>,
-`
+    content:  `
+    <p>This is a basic example of implementing images. Drag to re-order.</p>
+    <img src="https://placehold.co/800x400" />
+    <img src="https://placehold.co/800x400/6A00F5/white" />
+  `
   });
 
   return (
