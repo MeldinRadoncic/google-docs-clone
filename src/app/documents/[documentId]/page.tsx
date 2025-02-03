@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Editor } from './editor'
+import { Toolbar } from './toolbar'
 
 // Define the shape of the URL query parameters
 interface DocumentIdProps {
@@ -12,6 +13,7 @@ const DocumentIdPage = ({ params } : DocumentIdProps) => {
     
   return (
     <div className='min-h-screen bg-[#fafbfd]'>
+      <Toolbar />
     <Editor />
     </div>
   )
