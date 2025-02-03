@@ -16,9 +16,14 @@ import Image from '@tiptap/extension-image'
 import ImageResize from "tiptap-extension-resize-image"
 import Dropcursor from '@tiptap/extension-dropcursor'
 
+import { useEditorStore } from "@/store/use-editor-store";
+
 
 
 export const Editor = () => {
+    // The useEditorStore hook is used to access the editor instance from the store(global state).
+    const { setEditor } = useEditorStore();
+
     // The useEditor hook is used to create a new editor instance with the specified configuration. See the docs for more information: www.tiptap.dev/docs/editor/getting-started/install/nextjs
   const editor = useEditor({
     editorProps: {
@@ -44,6 +49,22 @@ export const Editor = () => {
       TableHeader,
       TableCell,
     ],
+    // The onCreate function is called when the editor is created. It is used to set the editor instance in the store(global state).
+    onCreate: ({ editor }) => setEditor(editor),
+    // The Clean up function.
+    onDestroy: () => setEditor(null),
+    // The onUpdate function is called when the editor is updated.
+    onUpdate: ({ editor }) => { setEditor(editor) },
+    // The onSelectionUpdate function is called when the selection is updated.
+    onSelectionUpdate: ({ editor }) => { setEditor(editor) },
+    // The onTransaction function is called when a transaction is made.
+    onTransaction: ({ editor }) => { setEditor(editor) },
+    // The onFocus function is called when the editor is focused.
+    onFocus: ({ editor }) => { setEditor(editor) },
+    // The onBlur function is called when the editor is blurred.
+    onBlur: ({ editor }) => { setEditor(editor) },
+    // The onError function is called when an error occurs.
+    onContentError: ({ editor }) => { setEditor(editor) },
 
     content:  `
     <p>This is a basic example of implementing images. Drag to re-order.</p>
