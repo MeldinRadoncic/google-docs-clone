@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react'
-import { LucideIcon, Undo2Icon, Redo2Icon, Printer, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react'
+import { LucideIcon, Undo2Icon, Redo2Icon, Printer, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquarePlus, ListTodo, ListTodoIcon, RemoveFormattingIcon } from 'lucide-react'
 import { cn } from '@/lib/utils';
 
 import { useEditorStore } from '@/store/use-editor-store';
@@ -91,6 +91,30 @@ export const Toolbar = () => {
         // The onClick function is called when the button is clicked. It is used to toggle the underline text style in the editor.
         onClick: () => editor?.chain().focus().toggleUnderline().run(),
       }
+    ],
+    // The third section of the toolbar
+    [
+      {
+      label:'Comment',
+      icon: MessageSquarePlus,
+      isActive: false,
+      // The onClick function is called when the button is clicked. It is used to add a comment to the editor.
+      onClick:() => console.log('Comment')
+    },
+    {
+      label: 'List Todo',
+      icon: ListTodoIcon,
+      isActive: editor?.isActive('taskList'),
+      // The onClick function is called when the button is clicked. It is used to toggle the task list in the editor.
+      onClick: () => editor?.chain().focus().toggleTaskList().run()
+    },
+    {
+      label: 'Remove Formatting',
+      icon: RemoveFormattingIcon,
+      isActive: false,
+      // The onClick function is called when the button is clicked. It is used to remove all formatting from the selected text in the editor.
+      onClick: () => editor?.chain().focus().unsetAllMarks().run()
+    }
     ]
   ];
   
@@ -105,6 +129,14 @@ export const Toolbar = () => {
       <Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
       {/*  The second section of the toolbar */}
       {sections[1].map((item) => (
+        <ToolbarButton
+          key = {item.label}
+          {...item}
+        />
+      ))}
+      {/* The third section of the toolbar */}
+      <Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
+      {sections[2].map((item) => (
         <ToolbarButton
           key = {item.label}
           {...item}
