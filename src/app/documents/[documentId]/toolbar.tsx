@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react'
-import { LucideIcon, Undo2Icon } from 'lucide-react'
+import { LucideIcon, Undo2Icon, Redo2Icon, Printer, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react'
 import { cn } from '@/lib/utils';
 
 import { useEditorStore } from '@/store/use-editor-store';
+import { Separator } from '@/components/ui/separator';
 
 // Define the props for the ToolbarButton component
 interface ToolbarButtonProps {
@@ -19,7 +20,7 @@ const ToolbarButton = ({ onClick, isActive, icon: Icon}: ToolbarButtonProps) => 
     <button
     onClick={onClick}
     className={cn('text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80',
-      isActive && 'bg-neutral-200/80'
+      isActive && 'bg-neutral-300'
     )}
     >
       <Icon className='size-4'/>
@@ -46,6 +47,49 @@ export const Toolbar = () => {
         // The onClick function is called when the button is clicked. It is used to undo the last action in the editor.
         onClick: () => editor?.chain().focus().undo().run(),
         
+      },
+      {
+        label:'Redo',
+        icon: Redo2Icon,
+        // The onClick function is called when the button is clicked. It is used to redo the last action in the editor.
+        onClick: () => editor?.chain().focus().redo().run()
+      },
+      {
+        label: 'Print',
+        icon: Printer,
+        onClick: () => window.print()
+      },
+      {
+        label:'Spell Check',
+        icon: SpellCheckIcon,
+        // The onClick function is called when the button is clicked. It is used to toggle the spell check feature in the editor.
+        onClick: () => {const current = editor?.view.dom.getAttribute('spellcheck');
+        editor?.view.dom.setAttribute('spellcheck', current === 'true' ? 'false' : 'true');
+      }},
+      
+    ],
+    // The second section of the toolbar
+    [
+      {
+        label: 'Bold',
+        icon: BoldIcon,
+        isActive: editor?.isActive('bold'),
+        // The onClick function is called when the button is clicked. It is used to toggle the bold text style in the editor.
+        onClick: () => editor?.chain().focus().toggleBold().run(),
+      },
+      {
+        label:'Italic',
+        icon: ItalicIcon,
+        isActive: editor?.isActive('italic'),
+        // The onClick function is called when the button is clicked. It is used to toggle the italic text style in the editor.
+        onClick: () => editor?.chain().focus().toggleItalic().run(),
+      },
+      {
+        label:'Underline',
+        icon: UnderlineIcon,
+        isActive: editor?.isActive('underline'),
+        // The onClick function is called when the button is clicked. It is used to toggle the underline text style in the editor.
+        onClick: () => editor?.chain().focus().toggleUnderline().run(),
       }
     ]
   ];
@@ -55,6 +99,14 @@ export const Toolbar = () => {
       {sections[0].map((item) => (
         <ToolbarButton
           key={item.label}
+          {...item}
+        />
+      ))}
+      <Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
+      {/*  The second section of the toolbar */}
+      {sections[1].map((item) => (
+        <ToolbarButton
+          key = {item.label}
           {...item}
         />
       ))}
