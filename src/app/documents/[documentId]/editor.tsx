@@ -18,6 +18,8 @@ import Dropcursor from "@tiptap/extension-dropcursor";
 import Underline from "@tiptap/extension-underline";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
+import Heading from '@tiptap/extension-heading'
+
 
 import { useEditorStore } from "@/store/use-editor-store";
 
@@ -42,6 +44,9 @@ export const Editor = () => {
         types: ["textStyle"],
       }),
       TextStyle,
+    Heading.configure({
+        levels: [0,1, 2, 3, 4, 5, 6],
+    }),
       TaskList,
       Image,
       ImageResize,
