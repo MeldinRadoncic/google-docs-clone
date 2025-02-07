@@ -205,8 +205,7 @@ export const Toolbar = () => {
         className='h-6 mx-1 bg-neutral'
       />
       <HeadingLevelButton />
-      {/* The TextColorButton component is used to add a color picker to the toolbar for selecting the text color in the editor. */}
-      <TextColorButton />
+      
       <Separator
         orientation='vertical'
         className='h-6 mx-1 bg-neutral'
@@ -218,6 +217,8 @@ export const Toolbar = () => {
           {...item}
         />
       ))}
+      {/* The TextColorButton component is used to add a color picker to the toolbar for selecting the text color in the editor. */}
+      <TextColorButton />
       {/* The third section of the toolbar */}
       <Separator
         orientation='vertical'
