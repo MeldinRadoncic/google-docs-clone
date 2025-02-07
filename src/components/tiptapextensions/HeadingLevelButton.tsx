@@ -7,9 +7,11 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ClipboardType } from "lucide-react";
 import { useEditorStore } from "@/store/use-editor-store";
+import { Level } from "@tiptap/extension-heading";
 import { cn } from "@/lib/utils";
+
 
 export const HeadingLevelButton =
   () => {
@@ -87,7 +89,7 @@ export const HeadingLevelButton =
                   ?.chain()
                   .focus()
                   .toggleHeading({
-                    level: level.value,
+                    level: level.value as Level,
                   })
                   .run();
                 setOpen(false);

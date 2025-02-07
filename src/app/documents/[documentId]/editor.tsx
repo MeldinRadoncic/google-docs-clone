@@ -45,7 +45,7 @@ export const Editor = () => {
       }),
       TextStyle,
     Heading.configure({
-        levels: [0,1, 2, 3, 4, 5, 6],
+        levels: [1, 2, 3, 4, 5, 6],
     }),
       TaskList,
       Image,
