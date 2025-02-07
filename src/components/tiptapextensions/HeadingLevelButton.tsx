@@ -66,10 +66,13 @@ export const HeadingLevelButton =
               open && "bg-neutral-300",
             )}>
             <span className='flex items-center truncate'>
-              {editor?.getAttributes(
-                "heading",
-              ).heading ||
-                "Normal Text"}
+                {/*  The editor?.isActive function is used to check if the current selection in the editor is a heading with the specified level. */}
+                {levels.find((level) => editor?.isActive(
+                    "heading",
+                    {
+                    level: level.value,
+                    },
+                ))?.label || "Normal Text"}
               <ChevronDown className='size-4' />
             </span>
           </button>
