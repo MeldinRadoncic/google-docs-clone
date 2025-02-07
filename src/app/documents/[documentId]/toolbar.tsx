@@ -1,13 +1,27 @@
-'use client';
+"use client";
 
-import React from 'react'
-import { LucideIcon, Undo2Icon, Redo2Icon, Printer, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquarePlus, ListTodo, ListTodoIcon, RemoveFormattingIcon } from 'lucide-react'
-import { cn } from '@/lib/utils';
-import { FontFamilyButton } from '@/components/tiptapextensions/FontFamilyButton';
-import { HeadingLevelButton } from '@/components/tiptapextensions/HeadingLevelButton';
+import React from "react";
+import {
+  LucideIcon,
+  Undo2Icon,
+  Redo2Icon,
+  Printer,
+  SpellCheckIcon,
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+  MessageSquarePlus,
+  ListTodo,
+  ListTodoIcon,
+  RemoveFormattingIcon,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { FontFamilyButton } from "@/components/tiptapextensions/FontFamilyButton";
+import { HeadingLevelButton } from "@/components/tiptapextensions/HeadingLevelButton";
 
-import { useEditorStore } from '@/store/use-editor-store';
-import { Separator } from '@/components/ui/separator';
+import { useEditorStore } from "@/store/use-editor-store";
+import { Separator } from "@/components/ui/separator";
+import { TextColorButton } from "@/components/tiptapextensions/TextColorButton";
 
 // Define the props for the ToolbarButton component
 interface ToolbarButtonProps {
@@ -16,110 +30,161 @@ interface ToolbarButtonProps {
   icon: LucideIcon;
 }
 // Define the ToolbarButton component
-const ToolbarButton = ({ onClick, isActive, icon: Icon}: ToolbarButtonProps) => {
-
-  return(
+const ToolbarButton = ({
+  onClick,
+  isActive,
+  icon: Icon,
+}: ToolbarButtonProps) => {
+  return (
     <button
-    onClick={onClick}
-    className={cn('text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80',
-      isActive && 'bg-neutral-300'
-    )}
-    >
-      <Icon className='size-4'/>
+      onClick={onClick}
+      className={cn(
+        "text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80",
+        isActive && "bg-neutral-300",
+      )}>
+      <Icon className='size-4' />
     </button>
-  )
-}
+  );
+};
 
-export const Toolbar = () => { 
+export const Toolbar = () => {
   // The useEditorStore hook is used to access the editor instance from the store(global state).
   const { editor } = useEditorStore();
 
   // Define the sections of the toolbar
-  const sections:{
+  const sections: {
     label: string;
     icon: LucideIcon;
     onClick: () => void;
     isActive?: boolean;
-
   }[][] = [
     [
       {
         label: "Undo",
         icon: Undo2Icon,
         // The onClick function is called when the button is clicked. It is used to undo the last action in the editor.
-        onClick: () => editor?.chain().focus().undo().run(),
-        
+        onClick: () =>
+          editor
+            ?.chain()
+            .focus()
+            .undo()
+            .run(),
       },
       {
-        label:'Redo',
+        label: "Redo",
         icon: Redo2Icon,
         // The onClick function is called when the button is clicked. It is used to redo the last action in the editor.
-        onClick: () => editor?.chain().focus().redo().run()
+        onClick: () =>
+          editor
+            ?.chain()
+            .focus()
+            .redo()
+            .run(),
       },
       {
-        label: 'Print',
+        label: "Print",
         icon: Printer,
-        onClick: () => window.print()
+        onClick: () => window.print(),
       },
       {
-        label:'Spell Check',
+        label: "Spell Check",
         icon: SpellCheckIcon,
         // The onClick function is called when the button is clicked. It is used to toggle the spell check feature in the editor.
-        onClick: () => {const current = editor?.view.dom.getAttribute('spellcheck');
-        editor?.view.dom.setAttribute('spellcheck', current === 'true' ? 'false' : 'true');
-      }},
-      
+        onClick: () => {
+          const current =
+            editor?.view.dom.getAttribute(
+              "spellcheck",
+            );
+          editor?.view.dom.setAttribute(
+            "spellcheck",
+            current === "true"
+              ? "false"
+              : "true",
+          );
+        },
+      },
     ],
     // The second section of the toolbar
     [
       {
-        label: 'Bold',
+        label: "Bold",
         icon: BoldIcon,
-        isActive: editor?.isActive('bold'),
+        isActive:
+          editor?.isActive("bold"),
         // The onClick function is called when the button is clicked. It is used to toggle the bold text style in the editor.
-        onClick: () => editor?.chain().focus().toggleBold().run(),
+        onClick: () =>
+          editor
+            ?.chain()
+            .focus()
+            .toggleBold()
+            .run(),
       },
       {
-        label:'Italic',
+        label: "Italic",
         icon: ItalicIcon,
-        isActive: editor?.isActive('italic'),
+        isActive:
+          editor?.isActive("italic"),
         // The onClick function is called when the button is clicked. It is used to toggle the italic text style in the editor.
-        onClick: () => editor?.chain().focus().toggleItalic().run(),
+        onClick: () =>
+          editor
+            ?.chain()
+            .focus()
+            .toggleItalic()
+            .run(),
       },
       {
-        label:'Underline',
+        label: "Underline",
         icon: UnderlineIcon,
-        isActive: editor?.isActive('underline'),
+        isActive: editor?.isActive(
+          "underline",
+        ),
         // The onClick function is called when the button is clicked. It is used to toggle the underline text style in the editor.
-        onClick: () => editor?.chain().focus().toggleUnderline().run(),
-      }
+        onClick: () =>
+          editor
+            ?.chain()
+            .focus()
+            .toggleUnderline()
+            .run(),
+      },
     ],
     // The third section of the toolbar
     [
       {
-      label:'Comment',
-      icon: MessageSquarePlus,
-      isActive: false,
-      // The onClick function is called when the button is clicked. It is used to add a comment to the editor.
-      onClick:() => console.log('Comment')
-    },
-    {
-      label: 'List Todo',
-      icon: ListTodoIcon,
-      isActive: editor?.isActive('taskList'),
-      // The onClick function is called when the button is clicked. It is used to toggle the task list in the editor.
-      onClick: () => editor?.chain().focus().toggleTaskList().run()
-    },
-    {
-      label: 'Remove Formatting',
-      icon: RemoveFormattingIcon,
-      isActive: false,
-      // The onClick function is called when the button is clicked. It is used to remove all formatting from the selected text in the editor.
-      onClick: () => editor?.chain().focus().unsetAllMarks().run()
-    }
-    ]
+        label: "Comment",
+        icon: MessageSquarePlus,
+        isActive: false,
+        // The onClick function is called when the button is clicked. It is used to add a comment to the editor.
+        onClick: () =>
+          console.log("Comment"),
+      },
+      {
+        label: "List Todo",
+        icon: ListTodoIcon,
+        isActive:
+          editor?.isActive("taskList"),
+        // The onClick function is called when the button is clicked. It is used to toggle the task list in the editor.
+        onClick: () =>
+          editor
+            ?.chain()
+            .focus()
+            .toggleTaskList()
+            .run(),
+      },
+      {
+        label: "Remove Formatting",
+        icon: RemoveFormattingIcon,
+        isActive: false,
+        // The onClick function is called when the button is clicked. It is used to remove all formatting from the selected text in the editor.
+        onClick: () =>
+          editor
+            ?.chain()
+            .focus()
+            .unsetAllMarks()
+            .run(),
+      },
+    ],
   ];
-  
+
   return (
     <div className='bg-[#f1f4f9] px-2.5 py-0.5 rounded-[24px] min-h-[40px] flex items-center gap-x-0.5 overflow-x-auto'>
       {sections[0].map((item) => (
@@ -128,30 +193,42 @@ export const Toolbar = () => {
           {...item}
         />
       ))}
- {/* The FontFamilyButton component is used to add a dropdown menu to the toolbar for selecting the font family of the text in the editor. */}
-<Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
-<FontFamilyButton />
-{/* The HeadingLevelButton component is used to add a dropdown menu to the toolbar for selecting the heading level of the text in the editor. */}
-<Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
-<HeadingLevelButton />
-      <Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
+      {/* The FontFamilyButton component is used to add a dropdown menu to the toolbar for selecting the font family of the text in the editor. */}
+      <Separator
+        orientation='vertical'
+        className='h-6 mx-1 bg-neutral'
+      />
+      <FontFamilyButton />
+      {/* The HeadingLevelButton component is used to add a dropdown menu to the toolbar for selecting the heading level of the text in the editor. */}
+      <Separator
+        orientation='vertical'
+        className='h-6 mx-1 bg-neutral'
+      />
+      <HeadingLevelButton />
+      {/* The TextColorButton component is used to add a color picker to the toolbar for selecting the text color in the editor. */}
+      <TextColorButton />
+      <Separator
+        orientation='vertical'
+        className='h-6 mx-1 bg-neutral'
+      />
       {/*  The second section of the toolbar */}
       {sections[1].map((item) => (
         <ToolbarButton
-          key = {item.label}
+          key={item.label}
           {...item}
         />
       ))}
       {/* The third section of the toolbar */}
-      <Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
+      <Separator
+        orientation='vertical'
+        className='h-6 mx-1 bg-neutral'
+      />
       {sections[2].map((item) => (
         <ToolbarButton
-          key = {item.label}
+          key={item.label}
           {...item}
         />
       ))}
-      
     </div>
-  )
-}
-
+  );
+};
