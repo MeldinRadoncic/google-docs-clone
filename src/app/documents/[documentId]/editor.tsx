@@ -6,6 +6,8 @@ import {
   EditorContent,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Color from "@tiptap/extension-color";
+import Highlight from "@tiptap/extension-highlight";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Table from "@tiptap/extension-table";
@@ -18,8 +20,7 @@ import Dropcursor from "@tiptap/extension-dropcursor";
 import Underline from "@tiptap/extension-underline";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
-import Heading from '@tiptap/extension-heading'
-
+import Heading from "@tiptap/extension-heading";
 
 import { useEditorStore } from "@/store/use-editor-store";
 
@@ -40,13 +41,17 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      Color,
+      Highlight.configure({
+        multicolor: true,
+      }),
       FontFamily.configure({
         types: ["textStyle"],
       }),
       TextStyle,
-    Heading.configure({
+      Heading.configure({
         levels: [1, 2, 3, 4, 5, 6],
-    }),
+      }),
       TaskList,
       Image,
       ImageResize,
