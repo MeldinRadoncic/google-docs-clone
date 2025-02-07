@@ -94,7 +94,10 @@ export const FontFamilyButton = () => {
                       font.value,
                   },
                 ) && "bg-neutral-300",
-              )}>
+              )}
+              style={{
+                fontFamily: font.label,
+              }}>
               {font.label}
             </button>
           ))}
