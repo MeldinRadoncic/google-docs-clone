@@ -3,6 +3,7 @@
 import React from 'react'
 import { LucideIcon, Undo2Icon, Redo2Icon, Printer, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquarePlus, ListTodo, ListTodoIcon, RemoveFormattingIcon } from 'lucide-react'
 import { cn } from '@/lib/utils';
+import { FontFamilyButton } from '@/components/tiptapextensions/FontFamilyButton';
 
 import { useEditorStore } from '@/store/use-editor-store';
 import { Separator } from '@/components/ui/separator';
@@ -126,6 +127,9 @@ export const Toolbar = () => {
           {...item}
         />
       ))}
+ {/* The FontFamilyButton component is used to add a dropdown menu to the toolbar for selecting the font family of the text in the editor. */}
+<Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
+<FontFamilyButton />
       <Separator orientation='vertical' className='h-6 mx-1 bg-neutral'/>
       {/*  The second section of the toolbar */}
       {sections[1].map((item) => (
@@ -142,6 +146,7 @@ export const Toolbar = () => {
           {...item}
         />
       ))}
+      
     </div>
   )
 }
