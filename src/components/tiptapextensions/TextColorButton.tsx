@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEditorStore } from "@/store/use-editor-store";
 import {
   type ColorResult,
-  CirclePicker,
+  SketchPicker,
 } from "react-color";
 import {
   DropdownMenu,
@@ -17,8 +17,7 @@ export const TextColorButton = () => {
     currentColor,
     setCurrentColor,
   ] = useState<string>("#000000");
-  const [open, setOpen] =
-    useState<boolean>(false);
+
   const { editor } = useEditorStore();
 
   // Function to handle color change
@@ -31,13 +30,10 @@ export const TextColorButton = () => {
       .setColor(color.hex)
       .run();
     setCurrentColor(color.hex);
-    setOpen(false);
   };
 
   return (
-    <DropdownMenu
-      open={open}
-      onOpenChange={setOpen}>
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button className='text-sm h-0.5 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'>
           <span className='text-neutral-900'>
@@ -53,7 +49,7 @@ export const TextColorButton = () => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <CirclePicker
+        <SketchPicker
           color={currentColor}
           onChange={handleColorChange}
         />
