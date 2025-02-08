@@ -18,6 +18,7 @@ import {
 import { cn } from "@/lib/utils";
 import { FontFamilyButton } from "@/components/tiptapextensions/FontFamilyButton";
 import { HeadingLevelButton } from "@/components/tiptapextensions/HeadingLevelButton";
+import { TextHighlightButton } from "@/components/tiptapextensions/TextHighlightButton";
 
 import { useEditorStore } from "@/store/use-editor-store";
 import { Separator } from "@/components/ui/separator";
@@ -219,6 +220,9 @@ export const Toolbar = () => {
       ))}
       {/* The TextColorButton component is used to add a color picker to the toolbar for selecting the text color in the editor. */}
       <TextColorButton />
+      {/* The TextHighlightButton component is used to add a color picker to the toolbar for highlighting the text in the editor. */}
+      <TextHighlightButton />
+      
       {/* The third section of the toolbar */}
       <Separator
         orientation='vertical'
