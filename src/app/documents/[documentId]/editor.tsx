@@ -7,6 +7,7 @@ import {
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Color from "@tiptap/extension-color";
+import Link from "@tiptap/extension-link";
 import Highlight from "@tiptap/extension-highlight";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
@@ -41,6 +42,12 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      Link.configure({
+        openOnClick: true,
+        autolink: true,
+        protocols: ["https"],
+        
+      }),
       Color,
       Highlight.configure({
         multicolor: true,
