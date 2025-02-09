@@ -27,6 +27,10 @@ export const ImageButton = () => {
   const [imageUrl, setImageUrl] =
     useState<string>("");
 
+    if (!editor) {
+        return null;
+    }
+
   // Handle the image upload event when the user uploads an image
   const handleImageUpload = (
     src: string,
@@ -72,7 +76,7 @@ export const ImageButton = () => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger asChild>
           <button className='text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'>
             <ImageIcon className='size-4' />
           </button>
