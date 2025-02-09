@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { FontFamilyButton } from "@/components/tiptapextensions/FontFamilyButton";
 import { HeadingLevelButton } from "@/components/tiptapextensions/HeadingLevelButton";
 import { TextHighlightButton } from "@/components/tiptapextensions/TextHighlightButton";
+import { ImageButton } from "@/components/tiptapextensions/ImageButton";
 import { LinkButton } from "@/components/tiptapextensions/LinkButton";
 
 import { useEditorStore } from "@/store/use-editor-store";
@@ -226,6 +227,8 @@ export const Toolbar = () => {
 
       {/* The LinkButton component is used to add a button to the toolbar for adding a link to the selected text in the editor. */}
       <LinkButton />
+      {/*  The ImageButton component is used to add a button to the toolbar for adding an image to the editor. */}
+      <ImageButton />
 
       {/* The third section of the toolbar */}
       <Separator
