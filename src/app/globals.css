@@ -83,6 +83,10 @@ body {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 @layer base {
   * {
     @apply border-border;
