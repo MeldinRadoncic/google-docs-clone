@@ -13,6 +13,7 @@ import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
+import TextAlign from '@tiptap/extension-text-align'
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Image from "@tiptap/extension-image";
@@ -55,6 +56,9 @@ export const Editor = () => {
       FontFamily.configure({
         types: ["textStyle"],
       }),
+        TextAlign.configure({
+        types: ["heading", "paragraph"],
+        }),
       TextStyle,
       Heading.configure({
         levels: [1, 2, 3, 4, 5, 6],
