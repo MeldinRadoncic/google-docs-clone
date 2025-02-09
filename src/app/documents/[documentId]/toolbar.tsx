@@ -21,6 +21,7 @@ import { HeadingLevelButton } from "@/components/tiptapextensions/HeadingLevelBu
 import { TextHighlightButton } from "@/components/tiptapextensions/TextHighlightButton";
 import { ImageButton } from "@/components/tiptapextensions/ImageButton";
 import { LinkButton } from "@/components/tiptapextensions/LinkButton";
+import { AlignButton } from "@/components/tiptapextensions/AlignButton";
 
 import { useEditorStore } from "@/store/use-editor-store";
 import { Separator } from "@/components/ui/separator";
@@ -229,6 +230,9 @@ export const Toolbar = () => {
       <LinkButton />
       {/*  The ImageButton component is used to add a button to the toolbar for adding an image to the editor. */}
       <ImageButton />
+
+       {/* The AlignButton component is used to add a dropdown menu to the toolbar for aligning the text in the editor. */}
+      <AlignButton />
 
       {/* The third section of the toolbar */}
       <Separator
