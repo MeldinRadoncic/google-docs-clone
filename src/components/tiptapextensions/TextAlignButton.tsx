@@ -42,6 +42,7 @@ export const AlignButton = () => {
                             onClick={() => {
                                 editor?.chain().focus().setTextAlign(alignment.value).run()
                             }}
+                            title={alignment.label}
                             className='text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'>
                             <alignment.icon className='size-4' />
                         </button>
