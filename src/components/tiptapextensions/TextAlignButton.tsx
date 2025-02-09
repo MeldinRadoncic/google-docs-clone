@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { useEditorStore } from '@/store/use-editor-store'
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from 'lucide-react'
@@ -7,6 +9,10 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '../ui/dr
 export const AlignButton = () => {
     // The useEditorStore hook is used to access the editor instance from the store(global state).
     const { editor } = useEditorStore();
+
+    if (!editor) {
+        return null;
+    } 
     
     // Define the alignments for the text
     const alignments = [
@@ -29,7 +35,7 @@ export const AlignButton = () => {
   
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger>
+            <DropdownMenuTrigger asChild>
                 <button className='text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'>
                     <AlignLeftIcon className='size-4' />
                 </button>
