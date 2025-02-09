@@ -26,6 +26,7 @@ import { AlignButton } from "@/components/tiptapextensions/TextAlignButton";
 import { useEditorStore } from "@/store/use-editor-store";
 import { Separator } from "@/components/ui/separator";
 import { TextColorButton } from "@/components/tiptapextensions/TextColorButton";
+import { ListItemButton } from "@/components/tiptapextensions/ListItemButton";
 
 // Define the props for the ToolbarButton component
 interface ToolbarButtonProps {
@@ -234,6 +235,9 @@ export const Toolbar = () => {
        {/* The AlignButton component is used to add a dropdown menu to the toolbar for aligning the text in the editor. */}
       <AlignButton />
 
+      {/* The ListItemButton component is used to add a dropdown menu to the toolbar for adding list items to the editor. */}
+      <ListItemButton />
+      
       {/* The third section of the toolbar */}
       <Separator
         orientation='vertical'
