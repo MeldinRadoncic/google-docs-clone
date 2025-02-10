@@ -121,9 +121,7 @@ export const Editor = () => {
       setEditor(editor);
     },
 
-    content: `
-    
-  `,
+    content: `Start typing...`,
   });
 
   return (
@@ -131,6 +129,7 @@ export const Editor = () => {
       <div className='min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0'>
         <EditorContent
           editor={editor}
+          
         />
       </div>
     </div>
