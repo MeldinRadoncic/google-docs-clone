@@ -60,7 +60,7 @@ export const FontFamilyButton = () => {
         <button
           className={cn(
             "text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80",
-          )}>
+          )} title='Font'>
           <span className='text-sm flex justify-items-center items-center truncate'>
             {editor?.getAttributes(
               "textStyle",

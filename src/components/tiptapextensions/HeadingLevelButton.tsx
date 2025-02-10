@@ -7,7 +7,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, ClipboardType } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useEditorStore } from "@/store/use-editor-store";
 import { Level } from "@tiptap/extension-heading";
 import { cn } from "@/lib/utils";
@@ -66,7 +66,7 @@ export const HeadingLevelButton =
             className={cn(
               "text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80",
               open && "bg-neutral-300",
-            )}>
+            )} title='Heading'>
             <span className='flex items-center truncate'>
                 {/*  The editor?.isActive function is used to check if the current selection in the editor is a heading with the specified level. */}
                 {levels.find((level) => editor?.isActive(

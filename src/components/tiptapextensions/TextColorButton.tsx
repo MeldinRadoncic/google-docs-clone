@@ -35,7 +35,7 @@ export const TextColorButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className='text-sm h-0.5 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'>
+        <button className='text-sm h-0.5 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80' title='Text Color'>
           <span className='text-neutral-900'>
             A
             <div

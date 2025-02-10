@@ -77,7 +77,7 @@ export const ImageButton = () => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className='text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'>
+          <button className='text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80' title='Insert Image'>
             <ImageIcon className='size-4' />
           </button>
         </DropdownMenuTrigger>
