@@ -11,11 +11,9 @@ import {
   ItalicIcon,
   UnderlineIcon,
   MessageSquarePlus,
-  ListTodo,
   ListTodoIcon,
   RemoveFormattingIcon,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { FontFamilyButton } from "@/components/tiptapextensions/FontFamilyButton";
 import { HeadingLevelButton } from "@/components/tiptapextensions/HeadingLevelButton";
 import { TextHighlightButton } from "@/components/tiptapextensions/TextHighlightButton";
@@ -27,31 +25,9 @@ import { useEditorStore } from "@/store/use-editor-store";
 import { Separator } from "@/components/ui/separator";
 import { TextColorButton } from "@/components/tiptapextensions/TextColorButton";
 import { ListItemButton } from "@/components/tiptapextensions/ListItemButton";
+import { ToolbarButton } from "@/components/Toolbar/ToolbarButton";
 
-// Define the props for the ToolbarButton component
-interface ToolbarButtonProps {
-  onClick: () => void;
-  isActive?: boolean;
-  icon: LucideIcon;
-}
-// Define the ToolbarButton component
-const ToolbarButton = ({
-  onClick,
-  isActive,
-  icon: Icon,
-}: ToolbarButtonProps) => {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80",
-        isActive && "bg-neutral-300",
-      )}>
-      <Icon className='size-4' />
-    </button>
-  );
-};
-
+// The Toolbar component is used to display the toolbar for the editor.
 export const Toolbar = () => {
   // The useEditorStore hook is used to access the editor instance from the store(global state).
   const { editor } = useEditorStore();
