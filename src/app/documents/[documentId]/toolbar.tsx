@@ -26,6 +26,7 @@ import { Separator } from "@/components/ui/separator";
 import { TextColorButton } from "@/components/tiptapextensions/TextColorButton";
 import { ListItemButton } from "@/components/tiptapextensions/ListItemButton";
 import { ToolbarButton } from "@/components/Toolbar/ToolbarButton";
+import { FontSizeButton } from "@/components/tiptapextensions/FontSizeButton";
 
 // The Toolbar component is used to display the toolbar for the editor.
 export const Toolbar = () => {
@@ -198,6 +199,10 @@ export const Toolbar = () => {
           {...item}
         />
       ))}
+
+      {/* The FontSizeButton component is used to add a dropdown menu to the toolbar for selecting the font size of the text in the editor. */}
+      <FontSizeButton />
+      
       {/* The TextColorButton component is used to add a color picker to the toolbar for selecting the text color in the editor. */}
       <TextColorButton />
       {/* The TextHighlightButton component is used to add a color picker to the toolbar for highlighting the text in the editor. */}
