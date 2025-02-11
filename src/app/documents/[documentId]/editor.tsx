@@ -9,7 +9,6 @@ import StarterKit from "@tiptap/starter-kit";
 import Color from "@tiptap/extension-color";
 import Link from "@tiptap/extension-link";
 import Highlight from "@tiptap/extension-highlight";
-import BulletList from '@tiptap/extension-bullet-list'
 import ListItem from '@tiptap/extension-list-item'
 import ListKeymap from '@tiptap/extension-list-keymap'
 import TaskItem from "@tiptap/extension-task-item";
@@ -26,6 +25,9 @@ import Underline from "@tiptap/extension-underline";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import Heading from "@tiptap/extension-heading";
+
+// import custom extensions
+import { FontSize } from "@/components/tiptapextensions/customextensions/font-size";
 
 import { useEditorStore } from "@/store/use-editor-store";
 
@@ -46,6 +48,7 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      FontSize,
       Link.configure({
         openOnClick: true,
         autolink: true,
