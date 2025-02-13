@@ -9,13 +9,13 @@ import StarterKit from "@tiptap/starter-kit";
 import Color from "@tiptap/extension-color";
 import Link from "@tiptap/extension-link";
 import Highlight from "@tiptap/extension-highlight";
-import ListItem from '@tiptap/extension-list-item'
-import ListKeymap from '@tiptap/extension-list-keymap'
+import ListItem from "@tiptap/extension-list-item";
+import ListKeymap from "@tiptap/extension-list-keymap";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
-import TextAlign from '@tiptap/extension-text-align'
+import TextAlign from "@tiptap/extension-text-align";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Image from "@tiptap/extension-image";
@@ -28,6 +28,7 @@ import Heading from "@tiptap/extension-heading";
 
 // import custom extensions
 import { FontSize } from "@/components/tiptapextensions/customextensions/font-size";
+import { LineHeight } from "@/components/tiptapextensions/customextensions/line-height";
 
 import { useEditorStore } from "@/store/use-editor-store";
 
@@ -49,22 +50,25 @@ export const Editor = () => {
     extensions: [
       StarterKit,
       FontSize,
+      LineHeight,
       Link.configure({
         openOnClick: true,
         autolink: true,
         protocols: ["https"],
-        
       }),
       ListItem,
       ListKeymap.configure({
         listTypes: [
-            {
-                itemName: 'listItem',
-                wrapperNames: ['bulletList', 'orderedList'],
-              },
+          {
+            itemName: "listItem",
+            wrapperNames: [
+              "bulletList",
+              "orderedList",
+            ],
+          },
         ],
       }),
-      
+
       Color,
       Highlight.configure({
         multicolor: true,
@@ -72,9 +76,9 @@ export const Editor = () => {
       FontFamily.configure({
         types: ["textStyle"],
       }),
-        TextAlign.configure({
+      TextAlign.configure({
         types: ["heading", "paragraph"],
-        }),
+      }),
       TextStyle,
       Heading.configure({
         levels: [1, 2, 3, 4, 5, 6],
@@ -132,7 +136,6 @@ export const Editor = () => {
       <div className='min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0'>
         <EditorContent
           editor={editor}
-          
         />
       </div>
     </div>
