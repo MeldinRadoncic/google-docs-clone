@@ -6,7 +6,7 @@ import {
   ChevronDown,
   Plus,
   Minus,
-  ArrowUpDownIcon,
+  ListCollapseIcon,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -84,7 +84,7 @@ export const LineHeightButton = () => {
           className='text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'
           title='Line Height'>
           <span className='text-xs flex items-center gap-1'>
-            <ArrowUpDownIcon className='size-4' />
+            <ListCollapseIcon className='size-4' />
             {currentLineHeight}
             <ChevronDown className='size-4' />
           </span>

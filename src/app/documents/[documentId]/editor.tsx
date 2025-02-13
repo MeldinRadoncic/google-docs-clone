@@ -31,6 +31,7 @@ import { FontSize } from "@/components/tiptapextensions/customextensions/font-si
 import { LineHeight } from "@/components/tiptapextensions/customextensions/line-height";
 
 import { useEditorStore } from "@/store/use-editor-store";
+import { types } from "util";
 
 export const Editor = () => {
   // The useEditorStore hook is used to access the editor instance from the store(global state).
