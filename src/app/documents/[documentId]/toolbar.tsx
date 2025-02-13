@@ -27,6 +27,7 @@ import { TextColorButton } from "@/components/tiptapextensions/TextColorButton";
 import { ListItemButton } from "@/components/tiptapextensions/ListItemButton";
 import { ToolbarButton } from "@/components/Toolbar/ToolbarButton";
 import { FontSizeButton } from "@/components/tiptapextensions/FontSizeButton";
+import { LineHeightButton } from "@/components/tiptapextensions/LineHeightButton";
 
 // The Toolbar component is used to display the toolbar for the editor.
 export const Toolbar = () => {
@@ -187,7 +188,7 @@ export const Toolbar = () => {
         className='h-6 mx-1 bg-neutral'
       />
       <HeadingLevelButton />
-      
+
       <Separator
         orientation='vertical'
         className='h-6 mx-1 bg-neutral'
@@ -202,7 +203,10 @@ export const Toolbar = () => {
 
       {/* The FontSizeButton component is used to add a dropdown menu to the toolbar for selecting the font size of the text in the editor. */}
       <FontSizeButton />
-      
+
+      {/* The LineHeightButton component is used to add a dropdown menu to the toolbar for selecting the line height of the text in the editor. */}
+      <LineHeightButton />
+
       {/* The TextColorButton component is used to add a color picker to the toolbar for selecting the text color in the editor. */}
       <TextColorButton />
       {/* The TextHighlightButton component is used to add a color picker to the toolbar for highlighting the text in the editor. */}
@@ -213,12 +217,12 @@ export const Toolbar = () => {
       {/*  The ImageButton component is used to add a button to the toolbar for adding an image to the editor. */}
       <ImageButton />
 
-       {/* The AlignButton component is used to add a dropdown menu to the toolbar for aligning the text in the editor. */}
+      {/* The AlignButton component is used to add a dropdown menu to the toolbar for aligning the text in the editor. */}
       <AlignButton />
 
       {/* The ListItemButton component is used to add a dropdown menu to the toolbar for adding list items to the editor. */}
       <ListItemButton />
-      
+
       {/* The third section of the toolbar */}
       <Separator
         orientation='vertical'
