@@ -31,7 +31,7 @@ import { FontSize } from "@/components/tiptapextensions/customextensions/font-si
 import { LineHeight } from "@/components/tiptapextensions/customextensions/line-height";
 
 import { useEditorStore } from "@/store/use-editor-store";
-import { types } from "util";
+import { Ruler } from "./ruler";
 
 export const Editor = () => {
   // The useEditorStore hook is used to access the editor instance from the store(global state).
@@ -40,6 +40,7 @@ export const Editor = () => {
 
   // The useEditor hook is used to create a new editor instance with the specified configuration. See the docs for more information: www.tiptap.dev/docs/editor/getting-started/install/nextjs
   const editor = useEditor({
+    immediatelyRender: false, // The immediatelyRender option is used to disable the immediate rendering of the editor and avoid hydration issues.
     editorProps: {
       attributes: {
         style:
@@ -134,6 +135,9 @@ export const Editor = () => {
 
   return (
     <div className='size-full overflow-x-auto bg-[#f9fbfd] px-4 print:p-0 print:overflow-visible print:bg-white'>
+      {/* The Ruler component is used to display the ruler at the top of the editor. */}
+      <Ruler />
+
       <div className='min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0'>
         <EditorContent
           editor={editor}
