@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Navbar } from './navbar'
 import { Editor } from './editor'
 import { Toolbar } from './toolbar'
 
@@ -13,6 +14,7 @@ const DocumentIdPage = ({ params } : DocumentIdProps) => {
     
   return (
     <div className='min-h-screen bg-[#fafbfd]'>
+    <Navbar />  
       <Toolbar />
     <Editor />
     </div>
