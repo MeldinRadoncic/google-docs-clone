@@ -54,6 +54,56 @@ export const Navbar = () => {
       .insertTable({ rows, cols })
       .run();
   };
+  // onDownload function
+  const onDownload = (
+    blob: Blob,
+    fileName: string,
+  ) => {
+    const url =
+      URL.createObjectURL(blob);
+    const a =
+      document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url); // Revoke the object URL after the download
+  };
+
+  // on Save JSON function
+  const onSaveJson = () => {
+    if (!editor) return;
+
+    const json = editor.getJSON();
+    const blob = new Blob(
+      [JSON.stringify(json)],
+      {
+        type: "application/json",
+      },
+    );
+    onDownload(blob, "document.json"); // TODO: use document title from database
+  };
+
+  // on Save HTML function
+  const onSaveHtml = () => {
+    if (!editor) return;
+    const html = editor.getHTML();
+    const blob = new Blob([html], {
+      type: "text/html",
+    });
+    onDownload(blob, "document.html"); // TODO: use document title from database
+  };
+
+  // on Save Text function
+  const onSaveText = () => {
+    if (!editor) return;
+    const text = editor.getText();
+    const blob = new Blob([text], {
+      type: "text/plain",
+    });
+    onDownload(blob, "document.txt"); // TODO: use document title from database
+  };
 
   return (
     <nav className='flex items-center justify-between'>
@@ -85,22 +135,34 @@ export const Navbar = () => {
                     </MenubarSubTrigger>
                     <MenubarSubContent>
                       {/* JSON */}
-                      <MenubarItem>
+                      <MenubarItem
+                        onClick={
+                          onSaveJson
+                        }>
                         <FileJsonIcon className='size-4 mr-2' />
                         JSON
                       </MenubarItem>
                       {/* HTML */}
-                      <MenubarItem>
+                      <MenubarItem
+                        onClick={
+                          onSaveHtml
+                        }>
                         <GlobeIcon className='size-4 mr-2' />
                         HTML
                       </MenubarItem>
                       {/* PDF */}
-                      <MenubarItem>
+                      <MenubarItem
+                        onClick={
+                          window.print
+                        }>
                         <BsFilePdf className='size-4 mr-2' />
                         PDF
                       </MenubarItem>
                       {/* Text */}
-                      <MenubarItem>
+                      <MenubarItem
+                        onClick={
+                          onSaveText
+                        }>
                         <TextIcon className='size-4 mr-2' />
                         Text
                       </MenubarItem>
