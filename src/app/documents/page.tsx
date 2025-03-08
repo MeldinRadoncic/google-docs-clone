@@ -1,17 +1,19 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 const Documents = () => {
   return (
-    <div> 
+    <div>
       <h1 className='text-4xl'>
-      All Documents
+        All Documents
       </h1>
-      <Link className=' text-2xl bg-blue-400 flex justify-center' href='/documents/123'>
-      Go to Id Document
-        </Link>
+      <Link
+        className=' text-2xl bg-blue-400 flex justify-center'
+        href='/documents/123'>
+        Go to Id Document
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Documents
+export default Documents;
