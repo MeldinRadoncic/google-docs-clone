@@ -1,5 +1,6 @@
 import Documents from "@/app/documents/page";
 import { Navbar } from "@/app/(home)/navbar";
+import { TemplatesGallery } from "@/app/(home)/templates-gallery";
 
 const Home = () => {
   return (
@@ -9,7 +10,7 @@ const Home = () => {
       </div>
 
       <div className='mt-16'>
-        <Documents />
+       <TemplatesGallery />
       </div>
     </main>
   );
