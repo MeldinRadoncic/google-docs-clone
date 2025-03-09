@@ -5,9 +5,10 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrev,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import { TEMPLATES } from "@/constants/templates";
 
 export const TemplatesGallery = () => {
   const templates = [
@@ -28,7 +29,7 @@ export const TemplatesGallery = () => {
         </h3>
         <Carousel>
           <CarouselContent className='-ml-4'>
-            {templates.map(
+            {TEMPLATES.map(
               (template) => (
                 <CarouselItem
                   key={template.id}
@@ -63,6 +64,8 @@ export const TemplatesGallery = () => {
               ),
             )}
           </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
         </Carousel>
       </div>
     </div>
