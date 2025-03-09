@@ -10,7 +10,7 @@ const Home = () => {
       </div>
 
       <div className='mt-16'>
-       <TemplatesGallery />
+        <TemplatesGallery />
       </div>
     </main>
   );
