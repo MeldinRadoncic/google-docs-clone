@@ -21,3 +21,23 @@ Start the development server
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+
+## Real-Time Database Setup ( Convex )
+To set up the real-time database, follow these steps:
+Create an account on [Convex](https://convex.dev/)
+Create a new project
+
+### Open Terminal on the project root directory
+Install Convex 
+```bash
+npm install convexdev@1.17.3
+```
+
+
+### Open new tab on terminal
+Run the following command
+```bash
+npx convex dev
+```
+
