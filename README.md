@@ -31,9 +31,9 @@ Create a new project
 ### Open Terminal on the project root directory
 Install Convex 
 ```bash
-npm install convexdev@1.17.3
+npm install convexdev@1.17.**3**
 ```
-
+****
 
 ### Open new tab on terminal
 Run the following command
