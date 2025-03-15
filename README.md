@@ -39,5 +39,15 @@ npm install convexdev@1.17.**3**
 Run the following command
 ```bash
 npx convex dev
-```
+
+
+## Clerk Setup
+To create a clerk account, follow these steps:
+Create an account on [Clerk](https://clerk.dev/)
+Create a new project
+Create a JWT Template
+inside the auth-config.ts file, replace the url with your issuer url
+
+All the info you can find on this url: https://docs.convex.dev/auth/clerk
+``` 
 
