@@ -1,7 +1,7 @@
 export const TEMPLATES = [
   {
     id: "blank",
-    label: "Blank",
+    label: "Blank Document",
     imageUrl: "/blank-document.svg",
   },
   {
