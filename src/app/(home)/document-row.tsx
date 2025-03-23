@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import {
   TableCell,
   TableRow,
@@ -19,6 +20,16 @@ export const DocumentRow = ({
   document,
 }: DocumentRowProps) => {
   // Open the document in a new tab Action
+  const router = useRouter();
+
+  // On row click handler
+  const onRowClick = () => {
+    router.push(
+      `/documents/${document._id}`,
+    );
+  };
+
+  // Open the document in a new tab Action
   const onNewTabClick = (
     id: string,
   ) => {
@@ -31,6 +42,7 @@ export const DocumentRow = ({
   return (
     <TableRow
       key={document._id}
+      onClick={onRowClick}
       className='cursor-pointer'>
       {/* Icon Table Cell */}
       <TableCell className='w-[50px]'>
