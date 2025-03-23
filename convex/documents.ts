@@ -85,3 +85,44 @@ export const removeById = mutation({
     await ctx.db.delete(args.id); // Delete the document
   },
 });
+
+// Update a document API endpoint
+export const updateById = mutation({
+  args: {
+    id: v.id("documents"),
+    title: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const user =
+      await ctx.auth.getUserIdentity(); // Get the user identity
+
+    // Check if the user is authenticated
+    if (!user) {
+      throw new ConvexError(
+        "Unauthenticated",
+      );
+    }
+    // Get the document by ID
+    const document = await ctx.db.get(
+      args.id,
+    );
+
+    // Check if the document exists
+    if (!document) {
+      throw new ConvexError(
+        "Document not found",
+      );
+    }
+    // Check if the document owner is the same as the user
+    if (
+      document.ownerId !== user.subject
+    ) {
+      throw new ConvexError(
+        "Unauthorized",
+      );
+    }
+    await ctx.db.patch(args.id, {
+      title: args.title,
+    }); // Update the document
+  },
+});
