@@ -7,11 +7,12 @@ import { api } from "../../../convex/_generated/api";
 import { DocumentsTable } from "@/app/(home)/documents-table";
 
 const Home = () => {
-  const { results, status, loadMore } = usePaginatedQuery(
-    api.documents.get,{}, { initialNumItems: 5 }
-  );
-  
-
+  const { results, status, loadMore } =
+    usePaginatedQuery(
+      api.documents.get,
+      {},
+      { initialNumItems: 5 },
+    );
 
   return (
     <main className='flex min-h-screen flex-col'>
@@ -22,12 +23,11 @@ const Home = () => {
       <div className='mt-16'>
         <TemplatesGallery />
         <DocumentsTable
-      documents={results}
-      status={status}
-      loadMore={loadMore}
-      />
+          documents={results}
+          status={status}
+          loadMore={loadMore}
+        />
       </div>
-      
     </main>
   );
 };
