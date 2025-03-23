@@ -4,6 +4,7 @@ import {
   MoreVertical,
   ExternalLinkIcon,
   TrashIcon,
+  FilePenIcon,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -20,6 +21,7 @@ interface DocumentMenuProps {
   ) => void;
 }
 import { RemoveDialog } from "@/components/remove-dialog";
+import { EditDialog } from "@/components/edit-dialog";
 
 export const DocumentMenu = ({
   documentId,
@@ -44,9 +46,20 @@ export const DocumentMenu = ({
           <ExternalLinkIcon />
           Open in new tab
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          Edit
-        </DropdownMenuItem>
+        <EditDialog
+          initialTitle={title}
+          documentId={documentId}>
+          <DropdownMenuItem
+            onSelect={(e) =>
+              e.preventDefault()
+            }
+            onClick={(e) =>
+              e.stopPropagation()
+            }>
+            <FilePenIcon className='size-4' />
+            Edit
+          </DropdownMenuItem>
+        </EditDialog>
         <RemoveDialog
           documentId={documentId}>
           <DropdownMenuItem
