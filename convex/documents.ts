@@ -11,11 +11,44 @@ export const get = query({
   args: {
     paginationOpts:
       paginationOptsValidator,
+    search: v.optional(v.string()),
   },
-  handler: async (ctx, args) => {
+  handler: async (
+    ctx,
+    { search, paginationOpts },
+  ) => {
+    // Get the user identity to protect the documents
+    const user =
+      await ctx.auth.getUserIdentity();
+
+    // Check if the user is authenticated
+    if (!user) {
+      throw new ConvexError(
+        "Unauthenticated",
+      );
+    }
+    if (search) {
+      return await ctx.db
+        .query("documents")
+        .withSearchIndex(
+          "search_title",
+          (q) =>
+            q
+              .search("title", search)
+              .eq(
+                "ownerId",
+                user.subject,
+              ),
+        )
+        .paginate(paginationOpts);
+    }
+
     return await ctx.db
       .query("documents")
-      .paginate(args.paginationOpts);
+      .withIndex("by_owner_id", (q) =>
+        q.eq("ownerId", user.subject),
+      )
+      .paginate(paginationOpts);
   },
 });
 
