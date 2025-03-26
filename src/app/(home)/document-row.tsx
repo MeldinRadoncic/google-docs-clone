@@ -22,6 +22,8 @@ export const DocumentRow = ({
   // Open the document in a new tab Action
   const router = useRouter();
 
+  
+
   // On row click handler
   const onRowClick = () => {
     router.push(
