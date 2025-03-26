@@ -15,6 +15,7 @@ import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 interface EditDialogProps {
   documentId: Id<"documents">;
@@ -52,6 +53,8 @@ export const EditDialog = ({
         title.trim() ||
         "Untitled Document",
     })
+    .catch(() => toast.error("Failed to update document"))
+    .then(() => toast.success("Document updated"))
       .then(() => {
         setOpen(false);
       })
