@@ -7,6 +7,8 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 // Convex Client Provider is a component that provides the Convex client to the rest of the application
 import { ConvexClientProvider } from "@/components/convex-client-provider";
+// Import the Toaster component from the Sonner library to use it for errors and success messages
+import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,6 +38,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NuqsAdapter>
           <ConvexClientProvider>
+            <Toaster />
             {children}
           </ConvexClientProvider>
         </NuqsAdapter>
