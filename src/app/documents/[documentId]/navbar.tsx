@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import {
   FileIcon,
   FileJsonIcon,
@@ -363,6 +364,15 @@ export const Navbar = () => {
             </Menubar>
           </div>
         </div>
+      </div>
+      <div className="flex gap-3 pl-6 items-center">
+      <OrganizationSwitcher
+        afterCreateOrganizationUrl= '/'
+        afterSelectOrganizationUrl= '/'
+        afterSelectPersonalUrl= '/'
+        afterLeaveOrganizationUrl= '/'
+      />
+      <UserButton />
       </div>
     </nav>
   );
