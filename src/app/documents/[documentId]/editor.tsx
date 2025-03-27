@@ -5,6 +5,7 @@ import {
   useEditor,
   EditorContent,
 } from "@tiptap/react";
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import StarterKit from "@tiptap/starter-kit";
 import Color from "@tiptap/extension-color";
 import Link from "@tiptap/extension-link";
@@ -32,11 +33,16 @@ import { LineHeight } from "@/components/tiptapextensions/customextensions/line-
 
 import { useEditorStore } from "@/store/use-editor-store";
 import { Ruler } from "./ruler";
+// import Threads component for the comments
+import { Threads } from "./threads";
 
 export const Editor = () => {
   // The useEditorStore hook is used to access the editor instance from the store(global state).
   const { setEditor } =
     useEditorStore();
+
+  const liveblocks =
+    useLiveblocksExtension();
 
   // The useEditor hook is used to create a new editor instance with the specified configuration. See the docs for more information: www.tiptap.dev/docs/editor/getting-started/install/nextjs
   const editor = useEditor({
@@ -50,8 +56,11 @@ export const Editor = () => {
       },
     },
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        history: false,
+      }),
       FontSize,
+      liveblocks,
       LineHeight,
       Link.configure({
         openOnClick: true,
@@ -142,6 +151,7 @@ export const Editor = () => {
         <EditorContent
           editor={editor}
         />
+        <Threads editor={editor} />
       </div>
     </div>
   );
