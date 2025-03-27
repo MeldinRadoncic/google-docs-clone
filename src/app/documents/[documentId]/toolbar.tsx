@@ -135,10 +135,9 @@ export const Toolbar = () => {
       {
         label: "Comment",
         icon: MessageSquarePlus,
-        isActive: false,
+        isActive: editor?.isActive("liveblockscommentMark"),
         // The onClick function is called when the button is clicked. It is used to add a comment to the editor.
-        onClick: () =>
-          console.log("Comment"),
+        onClick: () => editor?.chain().focus().addPendingComment().run(),
       },
       {
         label: "List Todo",
