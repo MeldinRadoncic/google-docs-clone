@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import "@liveblocks/react-ui/styles.css";
+import "@liveblocks/react-tiptap/styles.css";
 import "./globals.css";
 
 // Import NuqsAdapter from the Nuqs library to use it for the search functionality
@@ -8,7 +10,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 // Convex Client Provider is a component that provides the Convex client to the rest of the application
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 // Import the Toaster component from the Sonner library to use it for errors and success messages
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
