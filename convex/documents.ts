@@ -27,7 +27,6 @@ export const get = query({
         "Unauthenticated",
       );
     }
-    console.log("USER ", user);
 
     // Get the organization ID
     const organizationId =
@@ -93,6 +92,22 @@ export const get = query({
   },
 });
 
+// Get a document by ID API endpoint
+export const getById = query({
+  args: { id: v.id("documents") },
+  handler: async (ctx, { id }) => {
+    // Get the document info
+    const document =
+      await ctx.db.get(id);
+    if (!document) {
+      throw new ConvexError(
+        "Document not found",
+      );
+    }
+    return document;
+  },
+});
+
 // Create a document API endpoint
 export const create = mutation({
   args: {
@@ -138,6 +153,12 @@ export const removeById = mutation({
     const user =
       await ctx.auth.getUserIdentity(); // Get the user identity
 
+    const organizationId =
+      (user.organization_id ??
+        undefined) as
+        | string
+        | undefined;
+
     // Check if the user is authenticated
     if (!user) {
       throw new ConvexError(
@@ -157,9 +178,18 @@ export const removeById = mutation({
       );
     }
 
+    const isOwner =
+      document.ownerId === user.subject;
+    const isOrganizationMember = !!(
+      document.organizationId &&
+      document.organizationId ===
+        organizationId
+    );
+
     // Check if the document owner is the same as the user
     if (
-      document.ownerId !== user.subject
+      !isOwner &&
+      !isOrganizationMember
     ) {
       throw new ConvexError(
         "Unauthorized",
@@ -192,6 +222,12 @@ export const updateById = mutation({
       args.id,
     );
 
+    const organizationId =
+      (user.organization_id ??
+        undefined) as
+        | string
+        | undefined;
+
     // Check if the document exists
     if (!document) {
       throw new ConvexError(
@@ -199,9 +235,18 @@ export const updateById = mutation({
       );
     }
 
+    const isOwner =
+      document.ownerId === user.subject;
+    const isOrganizationMember = !!(
+      document.organizationId &&
+      document.organizationId ===
+        organizationId
+    );
+
     // Check if the document owner is the same as the user
     if (
-      document.ownerId !== user.subject
+      !isOwner &&
+      !isOrganizationMember
     ) {
       throw new ConvexError(
         "Unauthorized",
