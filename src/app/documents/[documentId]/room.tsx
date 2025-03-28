@@ -16,10 +16,12 @@ export function Room({
   const params = useParams();
   return (
     <LiveblocksProvider
-      publicApiKey={
-        "pk_dev_eVYgtxudt8YZJdbZvDaSYDiM01mDam0CujhijLgs6MnoeAN3EdQ6RR3EAAiBzR-Z"
-      }>
-      <RoomProvider id={params.documentId as string}>
+      throttle={16}
+      authEndpoint='/api/liveblocks-auth'>
+      <RoomProvider
+        id={
+          params.documentId as string
+        }>
         <ClientSideSuspense
           fallback={
             <div>Loading…</div>
