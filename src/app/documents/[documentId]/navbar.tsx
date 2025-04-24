@@ -37,6 +37,7 @@ import {
 
 import { DocumentInput } from "./document-input";
 import { useEditorStore } from "@/store/use-editor-store";
+import { Avatars } from './avatars'
 
 export const Navbar = () => {
   // The useEditorStore hook is used to access the editor instance from the store(global state).
@@ -366,6 +367,7 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="flex gap-3 pl-6 items-center">
+        <Avatars />
       <OrganizationSwitcher
         afterCreateOrganizationUrl= '/'
         afterSelectOrganizationUrl= '/'
