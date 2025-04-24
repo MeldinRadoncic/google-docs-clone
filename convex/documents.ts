@@ -153,11 +153,9 @@ export const removeById = mutation({
     const user =
       await ctx.auth.getUserIdentity(); // Get the user identity
 
-    const organizationId =
-      (user.organization_id ??
-        undefined) as
-        | string
-        | undefined;
+      if (!user) return;
+      const organizationId = (user.organization_id ?? undefined) as string | undefined;
+
 
     // Check if the user is authenticated
     if (!user) {

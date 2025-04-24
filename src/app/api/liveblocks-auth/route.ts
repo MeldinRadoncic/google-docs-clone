@@ -75,8 +75,8 @@ export async function POST(
     liveblocks.prepareSession(user.id, {
       userInfo: {
         name:
-          user.fullname ?? "Anonymous",
-        avatar: user.profileImageUrl,
+          user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous",
+        avatar: user.imageUrl,
       },
     });
 
